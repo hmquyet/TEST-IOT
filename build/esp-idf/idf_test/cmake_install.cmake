@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/esp-idf/components/idf_test
+# Install script for directory: D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/idf_test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

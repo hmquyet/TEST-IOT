@@ -75,7 +75,7 @@ menu "MQTT CONNECT"
 
     config BROKER_URL
         string "Broker URL"
-        default "mqtt://192.168.1.6:1883"
+        default "mqtt://20.249.217.5:1883"
     
     config USER_NAME
         string "User name"

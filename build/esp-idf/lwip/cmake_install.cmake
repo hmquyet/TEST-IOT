@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/esp-idf/components/lwip
+# Install script for directory: D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/lwip
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

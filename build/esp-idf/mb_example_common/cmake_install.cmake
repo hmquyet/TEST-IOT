@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/stand_saw/include/mb_example_common
+# Install script for directory: D:/ESP32/TEST-IOT/include/mb_example_common
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

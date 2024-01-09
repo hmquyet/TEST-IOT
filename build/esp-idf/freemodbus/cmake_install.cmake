@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/esp-idf/components/freemodbus
+# Install script for directory: D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/freemodbus
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

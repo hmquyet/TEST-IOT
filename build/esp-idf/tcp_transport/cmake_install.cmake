@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/esp-idf/components/tcp_transport
+# Install script for directory: D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/tcp_transport
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -1,6 +1,10 @@
 {
     "idf.adapterTargetName": "esp32",
     "files.associations": {
-        "ds3231.h": "c"
+        "ds3231.h": "c",
+        "i2cdev.h": "c",
+        "button.h": "c",
+        "wifi_connect.h": "c",
+        "main.h": "c"
     }
 }

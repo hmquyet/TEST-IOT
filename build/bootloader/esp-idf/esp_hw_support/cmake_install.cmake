@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/esp-idf/components/esp_hw_support
+# Install script for directory: D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_hw_support
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/ESP32/stand_saw/build/bootloader/esp-idf/esp_hw_support/port/esp32/cmake_install.cmake")
+  include("D:/ESP32/TEST-IOT/build/bootloader/esp-idf/esp_hw_support/port/esp32/cmake_install.cmake")
 
 endif()
 

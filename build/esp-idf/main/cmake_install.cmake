@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/stand_saw/main
+# Install script for directory: D:/ESP32/TEST-IOT/main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

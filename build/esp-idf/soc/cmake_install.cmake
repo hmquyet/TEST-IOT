@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/esp-idf/components/soc
+# Install script for directory: D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("D:/ESP32/stand_saw/build/esp-idf/soc/esp32/cmake_install.cmake")
+  include("D:/ESP32/TEST-IOT/build/esp-idf/soc/esp32/cmake_install.cmake")
 
 endif()
 

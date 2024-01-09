@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/stand_saw/include/ds1307
+# Install script for directory: D:/ESP32/TEST-IOT/include/ds1307
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

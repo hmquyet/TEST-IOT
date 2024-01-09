@@ -1,4 +1,4 @@
-/* * Data converted from D:/ESP32/stand_saw/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from D:/ESP32/TEST-IOT/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

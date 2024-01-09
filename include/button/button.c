@@ -27,6 +27,8 @@ int pin_count = -1;
 debounce_t * debounce;
 QueueHandle_t queue;
 
+
+
 static void update_button(debounce_t *d) {
     d->history = (d->history << 1) | gpio_get_level(d->pin);
 }
