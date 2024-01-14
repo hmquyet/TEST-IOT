@@ -113,9 +113,12 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("D:/ESP32/TEST-IOT/build/esp-idf/wifi_provisioning/cmake_install.cmake")
   include("D:/ESP32/TEST-IOT/build/esp-idf/button/cmake_install.cmake")
   include("D:/ESP32/TEST-IOT/build/esp-idf/main/cmake_install.cmake")
-  include("D:/ESP32/TEST-IOT/build/esp-idf/ds1307/cmake_install.cmake")
+  include("D:/ESP32/TEST-IOT/build/esp-idf/i2c/cmake_install.cmake")
   include("D:/ESP32/TEST-IOT/build/esp-idf/mb_example_common/cmake_install.cmake")
   include("D:/ESP32/TEST-IOT/build/esp-idf/output_iot/cmake_install.cmake")
+  include("D:/ESP32/TEST-IOT/build/esp-idf/spi/cmake_install.cmake")
+  include("D:/ESP32/TEST-IOT/build/esp-idf/uart/cmake_install.cmake")
+  include("D:/ESP32/TEST-IOT/build/esp-idf/wifi/cmake_install.cmake")
 
 endif()
 

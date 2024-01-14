@@ -1975,26 +1975,6 @@
                 "range": null,
                 "title": "Broker URL",
                 "type": "string"
-            },
-            {
-                "children": [],
-                "depends_on": null,
-                "help": null,
-                "id": "USER_NAME",
-                "name": "USER_NAME",
-                "range": null,
-                "title": "User name",
-                "type": "string"
-            },
-            {
-                "children": [],
-                "depends_on": null,
-                "help": null,
-                "id": "USER_PASSWORD",
-                "name": "USER_PASSWORD",
-                "range": null,
-                "title": "Enter your password",
-                "type": "string"
             }
         ],
         "depends_on": null,

@@ -27,6 +27,27 @@ esp_err_t i2c_master_init(i2c_port_t port, int sda, int scl)
         return i2c_driver_install(port, I2C_MODE_MASTER, 0, 0, 0);
 }
 
+// esp_err_t i2c_slave_init(i2c_port_t port, int sda, int scl,)
+// {
+//         i2c_config_t i2c_config = {
+//                 .mode = I2C_MODE_SLAVE,
+//                 .sda_io_num = sda,
+//                 .scl_io_num = scl,
+//                 .sda_pullup_en = GPIO_PULLUP_ENABLE,
+//                 .scl_pullup_en = GPIO_PULLUP_ENABLE,
+//                 .master.clk_speed = 1000000
+//                 .slave = {
+//             .addr_10bit_en = 0,
+//             .slave_addr = ,
+//         },
+//         };
+//         //i2c_param_config(I2C_NUM_0, &i2c_config);
+//         //i2c_driver_install(I2C_NUM_0, I2C_MODE_MASTER, 0, 0, 0);
+//         i2c_param_config(port, &i2c_config);
+//         return i2c_driver_install(port, I2C_MODE_SLAVE, 0, 0, 0);
+       
+// }
+
 esp_err_t i2c_dev_read(const i2c_dev_t *dev, const void *out_data, size_t out_size, void *in_data, size_t in_size)
 {
     if (!dev || !in_data || !in_size) return ESP_ERR_INVALID_ARG;

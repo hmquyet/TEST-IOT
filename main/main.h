@@ -38,14 +38,16 @@
 #include "esp_task_wdt.h"
 #include "esp_err.h"
 
+
 #include "RTC.h"
 #include "SDCard.h"
 #include "mqtt_connect.h"
 #include "wifi_connect.h"
 #include "button.h"
+#include "stm32f1uart.h"
 
 
-#define TAG "MQTT_DAQ"
+#define TAG "TEST-IOT"
 #define STORAGE_NAMESPACE "esp32_storage" // save variable to nvs storage
 
 #define TIMER_DIVIDER (16)                           //  Hardware timer clock divider
@@ -90,9 +92,11 @@ typedef struct
 
 typedef struct
 {
+  char *name;
+  char *value;
   char *timestamp;
-  int command;
-} da_message_t;
+  
+} data_message_t;
 
 enum feedback
 {
@@ -131,7 +135,7 @@ TimerHandle_t soft_timer_handle_6;
 TimerHandle_t soft_timer_handle_7;
 i2c_dev_t rtc_i2c;
 cycle_info_t cycle_info;
-da_message_t da_message;
+data_message_t data_message;
 cfg_info_t cfg_info;
 
 struct tm local_time;
@@ -182,8 +186,14 @@ int reboot_timer_flag;
  int64_t remain_time;
  bool error_sd_card;
  bool error_rtc;
+ 
 bool boot_to_reconnect;
  bool idle_trigger;
  cJSON *my_json;
 static char CURRENT_CYCLE_FILE[50] = "/sdcard/c1090422.csv";
  static char  CURRENT_STATUS_FILE[50] = "/sdcard/s1090422.csv";
+  char nameData[100];
+  char valueData[100]; 
+  char data_stm32f1[100];
+void stm32f1_task(void *arg);
+

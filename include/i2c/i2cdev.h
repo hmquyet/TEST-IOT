@@ -3,7 +3,7 @@
 
 #include "driver/i2c.h"
 
-#define I2C_FREQ_HZ 400000
+#define I2C_FREQ_HZ 100000
 #define I2CDEV_TIMEOUT 1000
 
 typedef struct {
@@ -17,6 +17,7 @@ typedef struct {
 esp_err_t i2c_master_init(i2c_port_t port, int sda, int scl);
 esp_err_t i2c_dev_read(const i2c_dev_t *dev, const void *out_data, size_t out_size, void *in_data, size_t in_size);
 esp_err_t i2c_dev_write(const i2c_dev_t *dev, const void *out_reg, size_t out_reg_size, const void *out_data, size_t out_size);
+
 inline esp_err_t i2c_dev_read_reg(const i2c_dev_t *dev, uint8_t reg,
         void *in_data, size_t in_size)
 {

@@ -1,7 +1,7 @@
 {
     "version":            "1",
     "project_name":       "esp_imm",
-    "project_version":    "395e14c-dirty",
+    "project_version":    "4722a37-dirty",
     "project_path":       "D:/ESP32/TEST-IOT",
     "idf_path":           "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6",
     "build_dir":          "D:/ESP32/TEST-IOT/build",
@@ -22,8 +22,8 @@
         "COMPONENT_KCONFIGS_PROJBUILD" : "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/app_update/Kconfig.projbuild;D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/bootloader/Kconfig.projbuild;D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esptool_py/Kconfig.projbuild;D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/partition_table/Kconfig.projbuild;D:/ESP32/TEST-IOT/main/Kconfig.projbuild"
     },
     "common_component_reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "lwip", "soc", "hal", "esp_rom", "esp_common", "esp_system", "esp32" ],
-    "build_components" : [ "app_trace", "app_update", "asio", "bootloader", "bootloader_support", "bt", "button", "cbor", "cmock", "coap", "console", "cxx", "driver", "ds1307", "efuse", "esp-tls", "esp32", "esp_adc_cal", "esp_common", "esp_eth", "esp_event", "esp_gdbstub", "esp_hid", "esp_http_client", "esp_http_server", "esp_https_ota", "esp_https_server", "esp_hw_support", "esp_ipc", "esp_local_ctrl", "esp_netif", "esp_pm", "esp_ringbuf", "esp_rom", "esp_serial_slave_link", "esp_system", "esp_timer", "esp_websocket_client", "esp_wifi", "espcoredump", "esptool_py", "expat", "fatfs", "freemodbus", "freertos", "hal", "heap", "idf_test", "jsmn", "json", "libsodium", "log", "lwip", "main", "mb_example_common", "mbedtls", "mdns", "mqtt", "newlib", "nghttp", "nvs_flash", "openssl", "output_iot", "partition_table", "perfmon", "protobuf-c", "protocomm", "pthread", "sdmmc", "soc", "spi_flash", "spiffs", "tcp_transport", "tcpip_adapter", "tinyusb", "ulp", "unity", "vfs", "wear_levelling", "wifi_provisioning", "wpa_supplicant", "xtensa", "" ],
-    "build_component_paths" : [ "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/app_trace", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/app_update", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/asio", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/bootloader", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/bootloader_support", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/bt", "D:/ESP32/TEST-IOT/include/button", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/cbor", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/cmock", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/coap", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/console", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/cxx", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver", "D:/ESP32/TEST-IOT/include/ds1307", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/efuse", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp-tls", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp32", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_adc_cal", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_common", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_eth", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_event", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_gdbstub", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_hid", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_http_client", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_http_server", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_https_ota", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_https_server", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_hw_support", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_ipc", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_local_ctrl", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_netif", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_pm", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_ringbuf", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_rom", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_serial_slave_link", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_system", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_timer", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_websocket_client", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_wifi", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/espcoredump", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esptool_py", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/expat", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/fatfs", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/freemodbus", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/freertos", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/hal", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/heap", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/idf_test", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/jsmn", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/json", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/libsodium", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/log", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/lwip", "D:/ESP32/TEST-IOT/main", "D:/ESP32/TEST-IOT/include/mb_example_common", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/mbedtls", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/mdns", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/mqtt", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/newlib", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/nghttp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/nvs_flash", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/openssl", "D:/ESP32/TEST-IOT/include/output_iot", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/partition_table", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/perfmon", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/protobuf-c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/protocomm", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/pthread", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/sdmmc", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/spi_flash", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/spiffs", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/tcp_transport", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/tcpip_adapter", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/tinyusb", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/ulp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/unity", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/vfs", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wifi_provisioning", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wpa_supplicant", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/xtensa", "" ],
+    "build_components" : [ "app_trace", "app_update", "asio", "bootloader", "bootloader_support", "bt", "button", "cbor", "cmock", "coap", "console", "cxx", "driver", "efuse", "esp-tls", "esp32", "esp_adc_cal", "esp_common", "esp_eth", "esp_event", "esp_gdbstub", "esp_hid", "esp_http_client", "esp_http_server", "esp_https_ota", "esp_https_server", "esp_hw_support", "esp_ipc", "esp_local_ctrl", "esp_netif", "esp_pm", "esp_ringbuf", "esp_rom", "esp_serial_slave_link", "esp_system", "esp_timer", "esp_websocket_client", "esp_wifi", "espcoredump", "esptool_py", "expat", "fatfs", "freemodbus", "freertos", "hal", "heap", "i2c", "idf_test", "jsmn", "json", "libsodium", "log", "lwip", "main", "mb_example_common", "mbedtls", "mdns", "mqtt", "newlib", "nghttp", "nvs_flash", "openssl", "output_iot", "partition_table", "perfmon", "protobuf-c", "protocomm", "pthread", "sdmmc", "soc", "spi", "spi_flash", "spiffs", "tcp_transport", "tcpip_adapter", "tinyusb", "uart", "ulp", "unity", "vfs", "wear_levelling", "wifi", "wifi_provisioning", "wpa_supplicant", "xtensa", "" ],
+    "build_component_paths" : [ "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/app_trace", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/app_update", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/asio", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/bootloader", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/bootloader_support", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/bt", "D:/ESP32/TEST-IOT/include/button", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/cbor", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/cmock", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/coap", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/console", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/cxx", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/efuse", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp-tls", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp32", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_adc_cal", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_common", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_eth", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_event", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_gdbstub", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_hid", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_http_client", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_http_server", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_https_ota", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_https_server", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_hw_support", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_ipc", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_local_ctrl", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_netif", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_pm", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_ringbuf", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_rom", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_serial_slave_link", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_system", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_timer", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_websocket_client", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esp_wifi", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/espcoredump", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/esptool_py", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/expat", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/fatfs", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/freemodbus", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/freertos", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/hal", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/heap", "D:/ESP32/TEST-IOT/include/i2c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/idf_test", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/jsmn", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/json", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/libsodium", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/log", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/lwip", "D:/ESP32/TEST-IOT/main", "D:/ESP32/TEST-IOT/include/mb_example_common", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/mbedtls", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/mdns", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/mqtt", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/newlib", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/nghttp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/nvs_flash", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/openssl", "D:/ESP32/TEST-IOT/include/output_iot", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/partition_table", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/perfmon", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/protobuf-c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/protocomm", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/pthread", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/sdmmc", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc", "D:/ESP32/TEST-IOT/include/spi", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/spi_flash", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/spiffs", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/tcp_transport", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/tcpip_adapter", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/tinyusb", "D:/ESP32/TEST-IOT/include/uart", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/ulp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/unity", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/vfs", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling", "D:/ESP32/TEST-IOT/include/wifi", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wifi_provisioning", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wpa_supplicant", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/xtensa", "" ],
     "build_component_info" : {
          "app_trace": {
             "alias": "idf::app_trace",
@@ -219,21 +219,6 @@
             "file": "D:/ESP32/TEST-IOT/build/esp-idf/driver/libdriver.a",
             "sources": [ "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/gpio.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/i2c.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/i2s.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/ledc.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/pcnt.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/periph_ctrl.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/rmt.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/rtc_io.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/rtc_module.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/sdspi_crc.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/sdspi_host.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/sdspi_transaction.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/sigmadelta.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/spi_common.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/spi_master.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/spi_slave.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/spi_bus_lock.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/timer.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/twai.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/uart.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/adc_common.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/dac_common.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/mcpwm.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/sdio_slave.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/sdmmc_host.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/sdmmc_transaction.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/touch_sensor_common.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/esp32/touch_sensor.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/esp32/adc.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/driver/esp32/dac.c" ],
             "include_dirs": [ "include", "esp32/include", "esp32/include" ]
-        },
-        "ds1307": {
-            "alias": "idf::ds1307",
-            "target": "___idf_ds1307",
-            "prefix": "idf",
-            "dir": "D:/ESP32/TEST-IOT/include/ds1307",
-            "type": "LIBRARY",
-            "lib": "__idf_ds1307",
-            "reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "lwip", "soc", "hal", "esp_rom", "esp_common", "esp_system", "esp32" ],
-            "priv_reqs": [ "main", "nvs_flash", "app_update" ],
-            "managed_reqs": [],
-            "managed_priv_reqs": [],
-            "file": "D:/ESP32/TEST-IOT/build/esp-idf/ds1307/libds1307.a",
-            "sources": [ "D:/ESP32/TEST-IOT/include/ds1307/ds3231.c", "D:/ESP32/TEST-IOT/include/ds1307/i2cdev.c" ],
-            "include_dirs": [ "." ]
         },
         "efuse": {
             "alias": "idf::efuse",
@@ -730,6 +715,21 @@
             "sources": [ "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/heap/heap_caps.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/heap/heap_caps_init.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/heap/multi_heap.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/heap/heap_tlsf.c" ],
             "include_dirs": [ "include" ]
         },
+        "i2c": {
+            "alias": "idf::i2c",
+            "target": "___idf_i2c",
+            "prefix": "idf",
+            "dir": "D:/ESP32/TEST-IOT/include/i2c",
+            "type": "LIBRARY",
+            "lib": "__idf_i2c",
+            "reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "lwip", "soc", "hal", "esp_rom", "esp_common", "esp_system", "esp32" ],
+            "priv_reqs": [ "main", "nvs_flash", "app_update" ],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "file": "D:/ESP32/TEST-IOT/build/esp-idf/i2c/libi2c.a",
+            "sources": [ "D:/ESP32/TEST-IOT/include/i2c/ds3231.c", "D:/ESP32/TEST-IOT/include/i2c/i2cdev.c", "D:/ESP32/TEST-IOT/include/i2c/stm32f1.c" ],
+            "include_dirs": [ "." ]
+        },
         "idf_test": {
             "alias": "idf::idf_test",
             "target": "___idf_idf_test",
@@ -832,8 +832,8 @@
             "managed_reqs": [],
             "managed_priv_reqs": [],
             "file": "D:/ESP32/TEST-IOT/build/esp-idf/main/libmain.a",
-            "sources": [ "D:/ESP32/TEST-IOT/main/wifi_connect.c", "D:/ESP32/TEST-IOT/main/RTC.c", "D:/ESP32/TEST-IOT/main/mqtt_connect.c", "D:/ESP32/TEST-IOT/main/file_server.c", "D:/ESP32/TEST-IOT/main/main.c", "D:/ESP32/TEST-IOT/main/SDCard.c", "D:/ESP32/TEST-IOT/build/favicon.ico.S", "D:/ESP32/TEST-IOT/build/upload_script.html.S" ],
-            "include_dirs": [ "." ]
+            "sources": [ "D:/ESP32/TEST-IOT/main/mqtt_connect.c", "D:/ESP32/TEST-IOT/main/RTC.c", "D:/ESP32/TEST-IOT/main/file_server.c", "D:/ESP32/TEST-IOT/main/main.c", "D:/ESP32/TEST-IOT/build/favicon.ico.S", "D:/ESP32/TEST-IOT/build/upload_script.html.S" ],
+            "include_dirs": [ ".", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/mqtt/esp-mqtt/include" ]
         },
         "mb_example_common": {
             "alias": "idf::mb_example_common",
@@ -1075,6 +1075,21 @@
             "sources": [ "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/lldesc.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/soc_include_legacy_warn.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/memory_layout_utils.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/adc_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/dac_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/gpio_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/i2c_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/i2s_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/interrupts.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/ledc_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/pcnt_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/rmt_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/rtc_io_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/sdio_slave_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/sdmmc_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/sigmadelta_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/soc_memory_layout.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/spi_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/timer_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/touch_sensor_periph.c", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/soc/esp32/uart_periph.c" ],
             "include_dirs": [ "include" ]
         },
+        "spi": {
+            "alias": "idf::spi",
+            "target": "___idf_spi",
+            "prefix": "idf",
+            "dir": "D:/ESP32/TEST-IOT/include/spi",
+            "type": "LIBRARY",
+            "lib": "__idf_spi",
+            "reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "lwip", "soc", "hal", "esp_rom", "esp_common", "esp_system", "esp32" ],
+            "priv_reqs": [ "main", "nvs_flash", "app_update" ],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "file": "D:/ESP32/TEST-IOT/build/esp-idf/spi/libspi.a",
+            "sources": [ "D:/ESP32/TEST-IOT/include/spi/SDCard.c" ],
+            "include_dirs": [ "." ]
+        },
         "spi_flash": {
             "alias": "idf::spi_flash",
             "target": "___idf_spi_flash",
@@ -1150,6 +1165,21 @@
             "sources": [],
             "include_dirs": []
         },
+        "uart": {
+            "alias": "idf::uart",
+            "target": "___idf_uart",
+            "prefix": "idf",
+            "dir": "D:/ESP32/TEST-IOT/include/uart",
+            "type": "LIBRARY",
+            "lib": "__idf_uart",
+            "reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "lwip", "soc", "hal", "esp_rom", "esp_common", "esp_system", "esp32" ],
+            "priv_reqs": [ "main", "nvs_flash", "app_update" ],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "file": "D:/ESP32/TEST-IOT/build/esp-idf/uart/libuart.a",
+            "sources": [ "D:/ESP32/TEST-IOT/include/uart/stm32f1uart.c" ],
+            "include_dirs": [ "." ]
+        },
         "ulp": {
             "alias": "idf::ulp",
             "target": "___idf_ulp",
@@ -1209,6 +1239,21 @@
             "file": "D:/ESP32/TEST-IOT/build/esp-idf/wear_levelling/libwear_levelling.a",
             "sources": [ "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling/Partition.cpp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling/SPI_Flash.cpp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling/WL_Ext_Perf.cpp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling/WL_Ext_Safe.cpp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling/WL_Flash.cpp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling/crc32.cpp", "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/components/wear_levelling/wear_levelling.cpp" ],
             "include_dirs": [ "include" ]
+        },
+        "wifi": {
+            "alias": "idf::wifi",
+            "target": "___idf_wifi",
+            "prefix": "idf",
+            "dir": "D:/ESP32/TEST-IOT/include/wifi",
+            "type": "LIBRARY",
+            "lib": "__idf_wifi",
+            "reqs": [ "cxx", "newlib", "freertos", "esp_hw_support", "heap", "log", "lwip", "soc", "hal", "esp_rom", "esp_common", "esp_system", "esp32" ],
+            "priv_reqs": [ "main", "nvs_flash", "app_update" ],
+            "managed_reqs": [],
+            "managed_priv_reqs": [],
+            "file": "D:/ESP32/TEST-IOT/build/esp-idf/wifi/libwifi.a",
+            "sources": [ "D:/ESP32/TEST-IOT/include/wifi/wifi_connect.c" ],
+            "include_dirs": [ "." ]
         },
         "wifi_provisioning": {
             "alias": "idf::wifi_provisioning",

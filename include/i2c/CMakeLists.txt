@@ -1,4 +1,4 @@
-set(app_src ds3231.c i2cdev.c)
+set(app_src ds3231.c i2cdev.c stm32f1.c)
 set(pri_req)
 idf_component_register(SRCS ${app_src}
                     INCLUDE_DIRS "."

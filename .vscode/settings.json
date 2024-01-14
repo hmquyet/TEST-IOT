@@ -4,7 +4,17 @@
         "ds3231.h": "c",
         "i2cdev.h": "c",
         "button.h": "c",
+        "mqtt_connect.h": "c",
         "wifi_connect.h": "c",
-        "main.h": "c"
+        "main.h": "c",
+        "stm32f1.h": "c",
+        "esp_wifi.h": "c",
+        "esp_sntp.h": "c",
+        "timers.h": "c",
+        "task.h": "c",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "*.ipp": "c"
     }
 }

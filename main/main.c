@@ -73,6 +73,7 @@ void restart_esp()
 /*----------------------------------------------------------------------*/
 static void gpio_task(void *arg)
 {
+    // sdcard_mount();
   double injection_time = 0;
   double injection_time_1 = 0;
   double last_fine_grinder_time = 0;
@@ -88,7 +89,7 @@ static void gpio_task(void *arg)
   // TWDT
   esp_task_wdt_reset();
 
-  sdcard_mount();
+
 
   cycle_id = 0;
   int hardwaretimer;
@@ -107,15 +108,15 @@ static void gpio_task(void *arg)
         xTimerStop(soft_timer_handle_5, 10); // Timer check idle status
         xTimerStart(soft_timer_handle_5, 10);
 
-           timer_set_counter_value(TIMER_GROUP_0, TIMER_1, 0x00000000ULL); // Set cho timer ve gia tri 0
+        timer_set_counter_value(TIMER_GROUP_0, TIMER_1, 0x00000000ULL); // Set cho timer ve gia tri 0
         timer_start(TIMER_GROUP_0, TIMER_1);
 
         ds3231_get_time(&rtc_i2c, &local_time);
         sprintf(message_mqtt, "{%cname%c: %cFineGrinderStatus%c,%cvalue%c: %d,%ctimestamp%c: %c%04d-%02d-%02dT%02d:%02d:%02d%c}",
                 34, 34, 34, 34, 34, 34, Running, 34, 34, 34, local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min, local_time.tm_sec, 34);
-        esp_mqtt_client_publish(client, FINE_GRINDER_STATUS_TOPIC , message_mqtt, 0, 1, 1);
+        esp_mqtt_client_publish(client, FINE_GRINDER_STATUS_TOPIC, message_mqtt, 0, 1, 1);
 
-     printf(message_text);
+        printf(message_text);
         // TWDT
         esp_task_wdt_delete(NULL);
 
@@ -131,7 +132,7 @@ static void gpio_task(void *arg)
         xTimerStop(soft_timer_handle_5, 10); // Timer check idle status
         xTimerStart(soft_timer_handle_5, 10);
 
-          timer_pause(TIMER_GROUP_0, TIMER_1); // Dung timer dem thoi gian chu ky
+        timer_pause(TIMER_GROUP_0, TIMER_1); // Dung timer dem thoi gian chu ky
         timer_get_counter_time_sec(TIMER_GROUP_0, TIMER_1, &last_fine_grinder_time);
 
         ESP_LOGI("TAG", "welding");
@@ -141,13 +142,13 @@ static void gpio_task(void *arg)
         ds3231_get_time(&rtc_i2c, &local_time);
         sprintf(message_mqtt, "{%cname%c: %cFineGrinderStatus%c,%cvalue%c: %d,%ctimestamp%c: %c%04d-%02d-%02dT%02d:%02d:%02d%c}",
                 34, 34, 34, 34, 34, 34, Idle, 34, 34, 34, local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour, local_time.tm_min, local_time.tm_sec, 34);
-        esp_mqtt_client_publish(client, FINE_GRINDER_STATUS_TOPIC , message_mqtt, 0, 1, 1);
- printf(message_text);
-         ds3231_get_time(&rtc_i2c, &inject_time);
+        esp_mqtt_client_publish(client, FINE_GRINDER_STATUS_TOPIC, message_mqtt, 0, 1, 1);
+        printf(message_text);
+        ds3231_get_time(&rtc_i2c, &inject_time);
         sprintf(message_mqtt, "{%cname%c: %cLastFineGrinderTime%c,%cvalue%c: %f,%ctimestamp%c: %c%04d-%02d-%02dT%02d:%02d:%02d%c}",
-                34, 34, 34, 34, 34, 34, last_fine_grinder_time  , 34, 34, 34, inject_time.tm_year, inject_time.tm_mon, inject_time.tm_mday, inject_time.tm_hour, inject_time.tm_min, inject_time.tm_sec, 34);
-        esp_mqtt_client_publish(client, FINE_GRINDER_LAST_TIME_TOPIC  , message_mqtt, 0, 1, 1);
- printf(message_text);
+                34, 34, 34, 34, 34, 34, last_fine_grinder_time, 34, 34, 34, inject_time.tm_year, inject_time.tm_mon, inject_time.tm_mday, inject_time.tm_hour, inject_time.tm_min, inject_time.tm_sec, 34);
+        esp_mqtt_client_publish(client, FINE_GRINDER_LAST_TIME_TOPIC, message_mqtt, 0, 1, 1);
+        printf(message_text);
         // TWDT
         esp_task_wdt_delete(NULL);
 
@@ -191,7 +192,10 @@ static void vSoftTimerCallback(TimerHandle_t xTimer)
   else if (pcTimerGetName(xTimer) == INITIATE_TASK_TIMER)
   {
     xTimerStop(soft_timer_handle_3, 10);
-    xTaskCreate(initiate_task, "Alarm task", 2048 * 2, NULL, 4, initiate_taskHandle);
+
+    /*NHỚ BẬT LẠI*/
+    // xTaskCreate(initiate_task, "Alarm task", 2048 * 2, NULL, 4, initiate_taskHandle);
+
     // TWDT
     esp_task_wdt_reset();
     // esp_task_wdt_delete(NULL);
@@ -227,7 +231,6 @@ static void vSoftTimerCallback(TimerHandle_t xTimer)
     if (error_rtc == false)
       ds3231_get_time(&rtc_i2c, &idle_time);
     xTimerStop(soft_timer_handle_5, 10);
-
 
     xTimerStart(soft_timer_handle_5, 10);
     // TWDT
@@ -272,7 +275,6 @@ static void timer_init_isr(int group, int timer, bool auto_reload, int timer_int
   }; // default clock source is APB
   timer_init(group, timer, &config);
 
-
   timer_set_counter_value(group, timer, 0);
 
   /* Configure the alarm value and the interrupt on alarm. */
@@ -295,88 +297,81 @@ static void app_notifications(void *arg)
   bool power_on = false;
   char message_text[500];
   char message_mqtt[500];
+ // xTaskCreatePinnedToCore(stm32f1_task, "stm32f1 Task", 2048 , NULL, 10, NULL, 0); // Core0
 
-  // Publish RTC fail message
-  if (ds3231_init_desc(&rtc_i2c, I2C_NUM_0, CONFIG_SDA_GPIO, CONFIG_SCL_GPIO) != ESP_OK)
-  {
-    error_rtc = true;
-    char mess_fb[200];
-    sprintf(mess_fb, "{%cMess%c:%d}", 34, 34, RTCfail);
+  // if (stm32f1_init(&rtc_i2c, I2C_NUM_0, CONFIG_SDA_GPIO, CONFIG_SCL_GPIO) == ESP_OK)
+  // {
+  //    printf("INIT I2C STM32F1 OK\n");
+  //    xTaskCreatePinnedToCore(stm32f1_task, "stm32f1 Task", 2048 , NULL, 10, NULL, 0); // Core0
+   
+  // }
+  // else{
+  //     printf("INIT I2C STM32F1 error\n");
+  // }
+
+  //mqtt_app_start();
+ while (1)
+ {
+  /* code */
+ }
  
-    ESP_LOGE(pcTaskGetTaskName(0), "Could not init device descriptor.");
-  }
-  else
-  {
-    esp_err_t err = ds3231_get_time(&rtc_i2c, &local_time);
-    if (err != ESP_OK)
-    {
-      ESP_LOGE(TAG, "RTC error");
-      error_rtc = true;
-      char mess_fb[200];
-      sprintf(mess_fb, "{%cMess%c:%d}", 34, 34, RTCfail);
     
-      // Cai dat thoi gian trong truong hop module RTC co van de
-      local_time.tm_year = 2022;
-      local_time.tm_mon = 4;
-      local_time.tm_mday = 20;
-      local_time.tm_hour = 9;
-      local_time.tm_min = 0;
-      local_time.tm_sec = 0;
-      inject_time.tm_year = 2022;
-      inject_time.tm_mon = 4;
-      inject_time.tm_mday = 20;
-      inject_time.tm_hour = 9;
-      inject_time.tm_min = 0;
-      inject_time.tm_sec = 0;
-      idle_time.tm_year = 2022;
-      idle_time.tm_mon = 4;
-      idle_time.tm_mday = 20;
-      idle_time.tm_hour = 9;
-      idle_time.tm_min = 0;
-      idle_time.tm_sec = 0;
-    }
-    ESP_LOGI("TAG", "Get time OK %04d-%02d-%02dT%02d:%02d:%02d", local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour,
-             local_time.tm_min, local_time.tm_sec);
-  }
+
+  // // Publish RTC fail message
+  // if (ds3231_init_desc(&rtc_i2c, I2C_NUM_0, CONFIG_SDA_GPIO, CONFIG_SCL_GPIO) != ESP_OK)
+  // {
+  //   error_rtc = true;
+  //   char mess_fb[200];
+  //   sprintf(mess_fb, "{%cMess%c:%d}", 34, 34, RTCfail);
+
+  //   ESP_LOGE(pcTaskGetTaskName(0), "Could not init device descriptor.");
+  // }
+  // else
+  // {
+  //   esp_err_t err = ds3231_get_time(&rtc_i2c, &local_time);
+  //   if (err != ESP_OK)
+  //   {
+  //     ESP_LOGE(TAG, "RTC error");
+  //     error_rtc = true;
+  //     char mess_fb[200];
+  //     sprintf(mess_fb, "{%cMess%c:%d}", 34, 34, RTCfail);
+
+  //     // Cai dat thoi gian trong truong hop module RTC co van de
+  //     local_time.tm_year = 2022;
+  //     local_time.tm_mon = 4;
+  //     local_time.tm_mday = 20;
+  //     local_time.tm_hour = 9;
+  //     local_time.tm_min = 0;
+  //     local_time.tm_sec = 0;
+  //     inject_time.tm_year = 2022;
+  //     inject_time.tm_mon = 4;
+  //     inject_time.tm_mday = 20;
+  //     inject_time.tm_hour = 9;
+  //     inject_time.tm_min = 0;
+  //     inject_time.tm_sec = 0;
+  //     idle_time.tm_year = 2022;
+  //     idle_time.tm_mon = 4;
+  //     idle_time.tm_mday = 20;
+  //     idle_time.tm_hour = 9;
+  //     idle_time.tm_min = 0;
+  //     idle_time.tm_sec = 0;
+  //   }
+  //   ESP_LOGI("TAG", "Get time OK %04d-%02d-%02dT%02d:%02d:%02d", local_time.tm_year, local_time.tm_mon, local_time.tm_mday, local_time.tm_hour,
+  //            local_time.tm_min, local_time.tm_sec);
+  // }
   // TWDT
-  // esp_task_wdt_delete(NULL);
-  mqtt_app_start();
-  esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, client);
-  while (1)
-  {
-    xTaskNotifyWait(0, 0, &command, portMAX_DELAY);
-    // TWDT
-    esp_task_wdt_add(NULL);
-    switch (command)
-    {
-    case WIFI_CONNEECTED:
-      esp_mqtt_client_start(client);
-      // TWDT
-      esp_task_wdt_delete(NULL);
-      break;
-    case MQTT_CONNECTED:
-      
-      // TWDT
-      esp_task_wdt_delete(NULL);
-      break;
-
-    case INITIATE_SETUP:
+   esp_task_wdt_delete(NULL);
   
-      // TWDT
-      esp_task_wdt_delete(NULL);
-      break;
 
-    default:
-      // TWDT
-      esp_task_wdt_delete(NULL);
-      break;
-    }
-  }
+
 }
 
 /*----------------------------------------------------------------------*/
 void app_main()
 {
+
+esp_task_wdt_init(2, true);
+  
   // NVS init
   esp_err_t err = nvs_flash_init();
   if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND)
@@ -385,7 +380,7 @@ void app_main()
     ESP_ERROR_CHECK(nvs_flash_erase());
     err = nvs_flash_init();
   }
-
+    
   error_sd_card = false;
   error_rtc = false;
   boot_to_reconnect = false;
@@ -403,11 +398,11 @@ void app_main()
   timer_set_counter_value(TIMER_GROUP_0, TIMER_1, 0x00000000ULL);
 
   // Set up Software timer (phuc vu cho viec nhu cac timer alarm)
-  soft_timer_handle_1 = xTimerCreate(RECONNECT_BROKER_TIMER, pdMS_TO_TICKS(100000), false, (void *)1, &vSoftTimerCallback);
-  soft_timer_handle_3 = xTimerCreate(INITIATE_TASK_TIMER, pdMS_TO_TICKS(5000), false, (void *)3, &vSoftTimerCallback);   // Timer Initiate
-  soft_timer_handle_5 = xTimerCreate(STATUS_TIMER, pdMS_TO_TICKS(900000), false, (void *)5, &vSoftTimerCallback);        // Timer xac dinh trang thai Idle
-  soft_timer_handle_6 = xTimerCreate(RECONNECT_TIMER, pdMS_TO_TICKS(3000), false, (void *)6, &vSoftTimerCallback);       // Timer scan wifi
-  soft_timer_handle_7 = xTimerCreate(BOOT_CONNECT_TIMER, pdMS_TO_TICKS(60000), false, (void *)7, &vSoftTimerCallback); // Timer Reboot to connect
+  soft_timer_handle_1 = xTimerCreate(RECONNECT_BROKER_TIMER, pdMS_TO_TICKS(2000), false, (void *)1, &vSoftTimerCallback);// timer reset mqtt connect
+  soft_timer_handle_3 = xTimerCreate(INITIATE_TASK_TIMER, pdMS_TO_TICKS(5000), false, (void *)3, &vSoftTimerCallback); // Timer Initiate
+  soft_timer_handle_5 = xTimerCreate(STATUS_TIMER, pdMS_TO_TICKS(900000), false, (void *)5, &vSoftTimerCallback);      // Timer xac dinh trang thai Idle
+  soft_timer_handle_6 = xTimerCreate(RECONNECT_TIMER, pdMS_TO_TICKS(3000), false, (void *)6, &vSoftTimerCallback);     // Timer scan wifi
+  soft_timer_handle_7 = xTimerCreate(BOOT_CONNECT_TIMER, pdMS_TO_TICKS(10000), false, (void *)7, &vSoftTimerCallback); // Timer Reboot to connect
   xTimerStart(soft_timer_handle_5, 10);
   xTimerStart(soft_timer_handle_3, 10);
 
@@ -417,18 +412,51 @@ void app_main()
   cfg_info.cycle_cfg = 0;
 
   // Initializing the task watchdog subsystem with an interval of 2 seconds
-  esp_task_wdt_init(2, true);
+  
+    //stm32f1_init(&rtc_i2c, I2C_NUM_0, CONFIG_SDA_GPIO, CONFIG_SCL_GPIO);
+ //vTaskDelay(2000 / portTICK_PERIOD_MS);
+  // Ket noi Wifi, MQTT
+   wifiInit();
+   
+  
 
-  // Ket noi Wifi
-  wifiInit();
+     //sdcard_mount();
+    // write_to_sd(message_text, MACHINE_STATUS_FILE);
+ //stm32f1_uart_config();
+//stm32f1_reciever_uart(data_stm32f1);
 
+  /*NHỚ BẬT LẠI*/
   // Khoi dong cac Task
-  xTaskCreate(app_notifications, "App logic", 2048 * 4, NULL, 5, &taskHandle);  // Core1
-  xTaskCreatePinnedToCore(gpio_task, "GPIO Task", 2048 * 4, NULL, 10, NULL, 0); // Core0
-
-  mqtt_mess_events = xQueueCreate(10, sizeof(esp_mqtt_event_handle_t));
-
+  //task có uxPriority là 5 sẽ được ưu tiên hơn 
+  //xTaskCreate(app_notifications, "App logic", 2048 * 4, NULL, 3, &taskHandle);  // Core1
+   //xTaskCreate(gpio_task, "GPIO Task", 2048 * 4, NULL, 5, &taskHandle);  // Core1
+  
+  // mqtt_mess_events = xQueueCreate(10, sizeof(esp_mqtt_event_handle_t));
 }
+
+ 
+
+// void stm32f1_task(void *arg)
+// {
+
+//     while (1)
+//     {
+//       esp_err_t err_i2c_stm32f1 = stm32f1_get_data(&rtc_i2c, data_stm32f1, sizeof(data_stm32f1));
+//       if ( err_i2c_stm32f1 != ESP_OK)
+//       {     
+        
+//       }
+//       else{
+//         printf(data_stm32f1);
+//       }
+     
+
+//     //vTaskDelay(2000 / portTICK_PERIOD_MS);
+     
+//     }
+   
+// }
+
 
 static void initiate_task(void *arg)
 {
@@ -446,7 +474,7 @@ static void initiate_task(void *arg)
     local_time.tm_mday = 1;
     char mess_fb[200];
     sprintf(mess_fb, "{%cMess%c:%d}", 34, 34, SychTime);
-    
+
     error_rtc = true; // Bat co bao loi thoi gian~
     ESP_LOGE("TAG", "The time on RTC board is not exactly --> Set default day");
   }
@@ -510,5 +538,6 @@ static void initiate_task(void *arg)
   xTaskNotify(taskHandle, INITIATE_SETUP, eSetValueWithOverwrite);
   // remain_time = remain_time - sub_time;
   // Delete task
+  
   delete_task();
 }

@@ -4,18 +4,7 @@
 #include "main.h"
 
 
-/*----------------------------------------------------------------------*/
-/**
- * @brief Write content to file in SD card in append+ mode
- *
- * @param content Content to write
- * @param file_path File path to write
- */
-/*----------------------------------------------------------------------*/
-/**
- * @brief Mount SD card using SPI bus
- *
- */
+
 void write_to_sd(char content[], char file_path[])
 {
   FILE *f = fopen(file_path, "a+");

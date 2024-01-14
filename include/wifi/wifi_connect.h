@@ -38,11 +38,11 @@
 #include "esp_task_wdt.h"
 #include "esp_err.h"
 
-#define CONFIG_WIFI_SSID "DESKTOP" //5k 1 tiếng
-#define CONFIG_WIFI_PASSWORD "11111111" //12345678
+#define MAX_RETRY 10
+#define EXAMPLE_ESP_WIFI_SSID "HQm"      // PDA_CHA_NhaDuoi  DESKTOPAI
+#define EXAMPLE_ESP_WIFI_PASS "12345679" // Tiaportal  10101010
 
-// #define SSID CONFIG_WIFI_SSID
-// #define PASSWORD CONFIG_WIFI_PASSWORD
+int WIFI_CONNECTED ;
 
 
 TaskHandle_t taskHandle;
@@ -50,4 +50,5 @@ TaskHandle_t taskHandle;
  bool boot_to_reconnect;
 
  void wifiInit(void);
- static void wifi_event_handler(void *arg, esp_event_base_t event_base, int32_t event_id, void *event_data);
+esp_err_t wifi_event_handler(void *arg, esp_event_base_t event_base,
+                             int32_t event_id, void *event_data);

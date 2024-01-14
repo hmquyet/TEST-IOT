@@ -13,6 +13,7 @@
 // #include "esp_check.h"
 #include "nvs.h"
 #include "cJSON.h"
+
 #include "mqtt_client.h"
 #include "driver/gpio.h"
 #include "driver/timer.h"
@@ -38,8 +39,13 @@
 #include "esp_task_wdt.h"
 #include "esp_err.h"/*  */
 
-static esp_mqtt_client_handle_t client ;
-void mqtt_event_handler_cb(event_data);
- void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data);
- void mqtt_app_start(void);
-  void mqtt_mess_task(void *arg);
+//static esp_mqtt_client_handle_t client ;
+
+char topic_buffer[100]; 
+char data_buffer[100];  
+// void mqtt_event_handler_cb(esp_mqtt_event_handle_t event);
+// void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data);
+static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_t event_id, void *event_data);
+void mqtt_app_start(void);
+//void mqtt_mess_task(void *arg);
+void mqtt_mess_processing(const char *mqttData);

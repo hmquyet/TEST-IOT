@@ -1,11 +1,11 @@
 menu "WIFI CONNECT"
     config WIFI_SSID
         string "SSID"
-        default "Wifi2zero8"
+        default "DESKTOPAI"
 
     config WIFI_PASSWORD
         string "PASSWORD"
-        default "0003131691"  
+        default "10101010"  
 
     config ESP_MAXIMUM_RETRY
         int "Maximum retry"
@@ -75,15 +75,15 @@ menu "MQTT CONNECT"
 
     config BROKER_URL
         string "Broker URL"
-        default "mqtt://20.249.217.5:1883"
+        default "mqtt://220.249.217.5:1883"
     
-    config USER_NAME
-        string "User name"
-        default "thanhtitan"
+    # config USER_NAME
+    #     string "User name"
+    #     default "thanhtitan"
 
-    config USER_PASSWORD
-        string "Enter your password"
-        default "thanh112358"    
+    # config USER_PASSWORD
+    #     string "Enter your password"
+    #     default "thanh112358"    
 endmenu
 menu "Http_File_Serving Example menu"
 
