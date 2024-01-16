@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/TEST-IOT/include/spi
+# Install script for directory: D:/ESP32/TEST-IOT/components/spi
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

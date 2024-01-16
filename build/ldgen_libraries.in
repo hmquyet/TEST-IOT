@@ -68,11 +68,13 @@ $<TARGET_FILE:__idf_openssl>
 $<TARGET_FILE:__idf_spiffs>
 $<TARGET_FILE:__idf_ulp>
 $<TARGET_FILE:__idf_wifi_provisioning>
-$<TARGET_FILE:__idf_button>
 $<TARGET_FILE:__idf_main>
+$<TARGET_FILE:__idf_SorftTimer>
+$<TARGET_FILE:__idf_TaskESP>
+$<TARGET_FILE:__idf_button>
+$<TARGET_FILE:__idf_file_server>
 $<TARGET_FILE:__idf_i2c>
-$<TARGET_FILE:__idf_mb_example_common>
 $<TARGET_FILE:__idf_output_iot>
 $<TARGET_FILE:__idf_spi>
 $<TARGET_FILE:__idf_uart>
-$<TARGET_FILE:__idf_wifi>
+$<TARGET_FILE:__idf_wifi_mqtt>

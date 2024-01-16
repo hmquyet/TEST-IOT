@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/TEST-IOT/include/i2c
+# Install script for directory: D:/ESP32/TEST-IOT/components/i2c
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

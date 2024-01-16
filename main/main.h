@@ -22,7 +22,7 @@
 #include "esp_sntp.h"
 #include "esp_attr.h"
 #include "esp_sleep.h"
-#include "ds3231.h"
+
 
 #include <sys/unistd.h>
 #include <sys/stat.h>
@@ -38,13 +38,16 @@
 #include "esp_task_wdt.h"
 #include "esp_err.h"
 
-
+#include "ds3231.h"
 #include "RTC.h"
 #include "SDCard.h"
-#include "mqtt_connect.h"
-#include "wifi_connect.h"
+#include "wifi_mqtt.h"
+#include "SorftTimer.h"
+
 #include "button.h"
+#include "task_esp.h"
 #include "stm32f1uart.h"
+#include "master.h"
 
 
 #define TAG "TEST-IOT"
@@ -54,10 +57,10 @@
 #define TIMER_SCALE (TIMER_BASE_CLK / TIMER_DIVIDER) // convert counter value to seconds
 
 // Define pin to read Cycle period, Open time, Machine's status
-#define GPIO_INPUT_FINE_GRINDER 36 // 36
-#define GPIO_INPUT_CYCLE_2 39 // 39
-
-
+#define GPIO_INPUT_STATUS 19 // 36
+#define GPIO_INPUT_DEFECTIVE 18 // 36
+#define GPIO_INPUT_MAINTENING 16 // 36
+#define GPIO_INPUT_MALFUNCTION 17 // 36
 
 
 #define SSID CONFIG_WIFI_SSID
@@ -95,7 +98,7 @@ typedef struct
   char *name;
   char *value;
   char *timestamp;
-  
+
 } data_message_t;
 
 enum feedback
@@ -115,8 +118,8 @@ enum machine
   PowerOff,
   Running,
   PowerOn,
-  Disconnect,
-  Connected,
+  Maintening,
+  Malfunction,
   Idle,
 
 };
@@ -152,24 +155,26 @@ static const uint32_t INITIATE_SETUP = BIT5;
 // static const uint32_t SYNC_TIME_FAIL = BIT7;
 
 // const char* CYCLE_TIME_TOPIC = "IMM/I2/Metric/CycleMessage";
-static const char *MACHINE_STATUS_TOPIC = "IMM/I2/Metric/MachineStatus";
-static const char *INJECTION_CYCLE_TOPIC = "IMM/I2/Metric/InjectionCycle";
-static const char *INJECTION_TIME_TOPIC = "IMM/I2/Metric/InjectionTime";
+// static const char *MACHINE_STATUS_TOPIC = "IMM/I2/Metric/MachineStatus";
+// static const char *INJECTION_CYCLE_TOPIC = "IMM/I2/Metric/InjectionCycle";
+// static const char *INJECTION_TIME_TOPIC = "IMM/I2/Metric/InjectionTime";
+
+static const char *MACHINE_STATUS_TOPIC = "FALAB/MACHANICAL MACHINES/FineGrinder/Metric/MachineStatus";
+static const char *IDLE_TIME_TOPIC = "FALAB/MACHANICAL MACHINES/FineGrinder/Metric/IdleTime";
+static const char *OPERATION_TIME_TOPIC = "FALAB/MACHANICAL MACHINES/FineGrinder/Metric/OperationTime";
+static const char *TOTAL_PRODUCT_TOPIC = "FALAB/MACHANICAL MACHINES/FineGrinder/Metric/TotalProduct";
+static const char *TOTAL_DEFECTIVE_TOPIC = "FALAB/MACHANICAL MACHINES/FineGrinder/Metric/TotalDefective";
+
+static const char *MATERIAL_CODE_TOPIC = "FALAB/MACHANICAL MACHINES/FineGrinder/Metric/MaterialCode";
+
+static char MACHINE_STATUS_FILE[50] = "/sdcard/FineGrinder/MachineStatus.csv";
+static char IDLE_TIME_FILE[50] = "/sdcard/FineGrinder/IdleTime.csv";
+static char OPERATION_TIME_FILE[50] = "/sdcard/FineGrinder/OperationTime.csv";
+static char TOTAL_PRODUCT_FILE[50] = "/sdcard/FineGrinder/TotalProduct.csv";
+static char TOTAL_DEFECTIVE_FILE[50] = "/sdcard/FineGrinder/TotalDefective.csv";
+static char MATERIAL_CODE_FILE[50] = "/sdcard/FineGrinder/MaterialCode.csv";
 
 
-static const char *FINE_GRINDER_STATUS_TOPIC = "FALAB/MACHANICAL MACHINES/FineGrinder/Metric/FineGrinderStatus";
-static const char *FINE_GRINDER_LAST_TIME_TOPIC = "FALAB/MACHANICAL MACHINES/FineGrinder/Metric/LastFineGrinderTime";
-
-
-static char MACHINE_STATUS_FILE[50] = "/sdcard/status.csv";
-static char MACHINE_RUNNING_TIME_FILE[50] = "/sdcard/running.csv";
-static char MACHINE_GRINDING_TIME_FILE[50] = "/sdcard/grinding.csv";
-
-static const char *MACHINE_LWT_TOPIC = "IMM/I2/Metric/LWT";
-static const char *DA_MESSAGE_TOPIC = "IMM/I2/Metric/DAMess";
-static const char *CONFIGURATION_TOPIC = "IMM/I2/Metric/ConfigMess";
-static const char *SYNC_TIME_TOPIC = "IMM/I2/Metric/SyncTime";
-static const char *FEEDBACK_TOPIC = "IMM/I2/Metric/Feedback";
 static const char *MOLD_ID_DEFAULT = "NotConfigured";
 static const char *RECONNECT_BROKER_TIMER = "RECONNECT_BROKER_TIMER";
 static const char *OPEN_CHECK_TIMER = "OPEN_CHECK_TIMER";
@@ -178,22 +183,29 @@ static const char *SHIFT_REBOOT_TIMER = "SHIFT_REBOOT_TIMER";
 static const char *STATUS_TIMER = "STATUS_TIMER";
 static const char *RECONNECT_TIMER = "RECONNECT_TIMER";
 static const char *BOOT_CONNECT_TIMER = "BOOT_CONNECT_TIMER";
+static const char *RING_TIMER = "RING_TIMER";
 
- int cycle_id;
- int reconnect_time;
- int error_time_local;
+int cycle_id;
+int reconnect_time;
+int error_time_local;
 int reboot_timer_flag;
- int64_t remain_time;
- bool error_sd_card;
- bool error_rtc;
- 
-bool boot_to_reconnect;
- bool idle_trigger;
- cJSON *my_json;
-static char CURRENT_CYCLE_FILE[50] = "/sdcard/c1090422.csv";
- static char  CURRENT_STATUS_FILE[50] = "/sdcard/s1090422.csv";
-  char nameData[100];
-  char valueData[100]; 
-  char data_stm32f1[100];
-void stm32f1_task(void *arg);
 
+int64_t remain_time;
+bool error_sd_card;
+bool error_rtc;
+
+bool boot_to_reconnect;
+bool idle_trigger;
+cJSON *my_json;
+// static char CURRENT_CYCLE_FILE[50] = "/sdcard/c1090422.csv";
+// static char CURRENT_STATUS_FILE[50] = "/sdcard/s1090422.csv";
+char nameData[100];
+char valueData[100];
+char data_stm32f1[100];
+void stm32f1_task(void *arg);
+static void delete_task()
+{
+  vTaskDelete(NULL);
+}
+void restart_esp();
+esp_err_t save_value_nvs(int *value2write, char *keyvalue);

@@ -1,4 +1,4 @@
-/* * Data converted from D:/ESP32/TEST-IOT/main/favicon.ico
+/* * Data converted from D:/ESP32/TEST-IOT/components/file_server/favicon.ico
  */
 .data
 .section .rodata.embedded

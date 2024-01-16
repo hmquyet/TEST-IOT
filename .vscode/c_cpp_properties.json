@@ -4,7 +4,7 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "D:/ESP32/**"
+                "D:/ESP32/Espressif/frameworks/esp-idf-v4.3.6/**" 
             ],
             "defines": [
                 "_DEBUG",

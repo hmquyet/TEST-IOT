@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/TEST-IOT/include/uart
+# Install script for directory: D:/ESP32/TEST-IOT/components/uart
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

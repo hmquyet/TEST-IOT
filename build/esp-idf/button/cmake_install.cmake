@@ -1,4 +1,4 @@
-# Install script for directory: D:/ESP32/TEST-IOT/include/button
+# Install script for directory: D:/ESP32/TEST-IOT/components/button
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

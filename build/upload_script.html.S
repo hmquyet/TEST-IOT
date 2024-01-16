@@ -1,4 +1,4 @@
-/* * Data converted from D:/ESP32/TEST-IOT/main/upload_script.html
+/* * Data converted from D:/ESP32/TEST-IOT/components/file_server/upload_script.html
  */
 .data
 .section .rodata.embedded
